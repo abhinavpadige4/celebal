@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="controls-panel">
+    <h2>Data Pipeline Controls</h2>
+    <p>Execute the full end-to-end ML pipeline on the `tesla_deliveries_dataset_2015_2025.csv` dataset.</p>
+    <button id="run-pipeline-btn" class="btn primary">Run Pipeline</button>
+    <div id="status-message" class="status-message hidden"></div>
+</div>
+
+<div id="results-container" class="results-container hidden">
+    <!-- Phase 2: Loading -->
+    <div class="phase-card" id="phase-2">
+        <div class="phase-header" onclick="togglePhase('phase-2-body')">
+            <h3>Phase 2: Data Loading</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-2-body">
+            <p>Dataset loaded successfully.</p>
+            <div id="phase2-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 3: Data Understanding -->
+    <div class="phase-card" id="phase-3">
+        <div class="phase-header" onclick="togglePhase('phase-3-body')">
+            <h3>Phase 3: Data Understanding</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-3-body">
+            <div id="phase3-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 4: Cleaning -->
+    <div class="phase-card" id="phase-4">
+        <div class="phase-header" onclick="togglePhase('phase-4-body')">
+            <h3>Phase 4: Data Cleaning</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-4-body">
+            <div id="phase4-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 5: EDA -->
+    <div class="phase-card" id="phase-5">
+        <div class="phase-header" onclick="togglePhase('phase-5-body')">
+            <h3>Phase 5: Exploratory Data Analysis</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-5-body">
+            <div id="phase5-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 6: Feature Engineering -->
+    <div class="phase-card" id="phase-6">
+        <div class="phase-header" onclick="togglePhase('phase-6-body')">
+            <h3>Phase 6: Feature Engineering</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-6-body">
+            <div id="phase6-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 7: Preprocessing -->
+    <div class="phase-card" id="phase-7">
+        <div class="phase-header" onclick="togglePhase('phase-7-body')">
+            <h3>Phase 7: Train/Test Split & Preprocessing</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-7-body">
+            <div id="phase7-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 8: Modeling -->
+    <div class="phase-card" id="phase-8">
+        <div class="phase-header" onclick="togglePhase('phase-8-body')">
+            <h3>Phase 8: Model Building & Evaluation</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-8-body">
+            <div id="phase8-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 9: CV -->
+    <div class="phase-card" id="phase-9">
+        <div class="phase-header" onclick="togglePhase('phase-9-body')">
+            <h3>Phase 9: Cross Validation</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-9-body">
+            <div id="phase9-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 10: Tuning -->
+    <div class="phase-card" id="phase-10">
+        <div class="phase-header" onclick="togglePhase('phase-10-body')">
+            <h3>Phase 10: Hyperparameter Tuning</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-10-body">
+            <div id="phase10-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 11: Feature Importance -->
+    <div class="phase-card" id="phase-11">
+        <div class="phase-header" onclick="togglePhase('phase-11-body')">
+            <h3>Phase 11: Feature Importance</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-11-body">
+            <div id="phase11-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 12: SHAP -->
+    <div class="phase-card" id="phase-12">
+        <div class="phase-header" onclick="togglePhase('phase-12-body')">
+            <h3>Phase 12: SHAP Explainability</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-12-body">
+            <div id="phase12-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 13: Time Series -->
+    <div class="phase-card" id="phase-13">
+        <div class="phase-header" onclick="togglePhase('phase-13-body')">
+            <h3>Phase 13: Time Series Forecasting</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-13-body">
+            <div id="phase13-content"></div>
+        </div>
+    </div>
+
+    <!-- Phase 14/15: Model IO -->
+    <div class="phase-card" id="phase-15">
+        <div class="phase-header" onclick="togglePhase('phase-15-body')">
+            <h3>Phase 14 & 15: Model IO & Final Output</h3>
+            <span class="status-icon">✓</span>
+        </div>
+        <div class="phase-body hidden" id="phase-15-body">
+            <div id="phase15-content"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
